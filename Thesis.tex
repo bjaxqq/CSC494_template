@@ -1,0 +1,370 @@
+% ============================================================
+% Quinnipiac University
+% Department of Computer Science
+% Senior Thesis Template
+%
+% CSC 494 — Senior Thesis II
+%
+% HOW TO USE THIS TEMPLATE:
+%   1. Fill in your details in the TITLE PAGE section below.
+%   2. Write your abstract in Abstract.tex.
+%   3. Add, remove, or rename chapter files to match your
+%      thesis structure. Update the \include{} calls below.
+%   4. Add references to References.bib.
+%   5. Compile: pdflatex → bibtex → pdflatex → pdflatex.
+%
+%   If you are new to LaTeX, read LATEX_GUIDE.tex first.
+%   It covers figures, tables, equations, lists, code, and
+%   cross-references with working examples you can copy.
+%
+% Do NOT modify the package list or formatting commands
+% unless you have confirmed the change with your advisor.
+% ============================================================
+
+
+\documentclass[onecolumn, 12pt, fullpage, a4paper]{report}
+
+
+% ============================================================
+% MATHEMATICS
+% ============================================================
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[cmex10]{amsmath}
+\usepackage{latexsym,amsfonts}
+
+
+% ============================================================
+% FIGURES AND GRAPHICS
+% ============================================================
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{float}             % [H] placement specifier
+\usepackage{wrapfig}
+\usepackage{subcaption}        % subfigure environments
+\usepackage[figuresright]{rotating}
+\usepackage{pdfpages}
+
+
+% ============================================================
+% TABLES
+% ============================================================
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{adjustbox}
+
+
+% ============================================================
+% PAGE LAYOUT AND TYPOGRAPHY
+% ============================================================
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{color}
+
+
+% ============================================================
+% REFERENCES AND HYPERLINKS
+% ============================================================
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{breakcites}
+\usepackage[hidelinks]{hyperref}
+% Replace [hidelinks] with nothing for colored clickable links
+\usepackage{url}
+
+
+% ============================================================
+% CODE LISTINGS
+% ============================================================
+\usepackage{listings}
+\usepackage{lstautogobble}
+
+% Default code style — adjust colors and language as needed
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{orange},
+  numberstyle=\tiny\color{gray},
+  numbers=left,
+  stepnumber=1,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=4,
+  captionpos=b
+}
+
+
+% ============================================================
+% GLOSSARIES, ABBREVIATIONS, AND SYMBOLS
+% ============================================================
+\usepackage{ifthen,xkeyval,xfor,amsgen}
+\usepackage[acronym, toc, nogroupskip]{glossaries}
+\newglossary[slg]{symbols}{syi}{sbl}{List of Symbols}
+\makeglossaries
+\input{Lists}
+% To generate the abbreviation and symbol lists, run after
+% the first pdflatex pass:
+%   makeindex -s Thesis.ist -t Thesis.alg -o Thesis.acr Thesis.acn
+%   makeindex -s Thesis.ist -t Thesis.slg -o Thesis.syi Thesis.sbl
+%   makeindex -s Thesis.ist -t Thesis.glg -o Thesis.gls Thesis.glo
+
+
+% ============================================================
+% MISCELLANEOUS
+% ============================================================
+\usepackage{etoolbox}
+\usepackage{wasysym}
+
+
+% ============================================================
+% PAGE GEOMETRY
+% ============================================================
+\usepackage[
+  lmargin=40mm,   % wider left margin for binding
+  rmargin=25mm,
+  vmargin=25mm,
+  headsep=2.5mm
+]{geometry}
+
+
+% ============================================================
+% HEADING FONT SIZES (14pt uniform)
+% ============================================================
+\chapterfont{\fontsize{14}{15}\selectfont}
+\sectionfont{\fontsize{14}{15}\selectfont}
+\subsectionfont{\fontsize{14}{15}\selectfont}
+\subsubsectionfont{\fontsize{14}{15}\selectfont}
+
+
+% ============================================================
+% HEADER AND FOOTER
+% Page numbers appear centered in the header on every page.
+% ============================================================
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[CO,CE]{\thepage}
+\fancyheadoffset[L]{0.01mm}
+\renewcommand{\headrulewidth}{0pt}
+
+
+% ============================================================
+% PLAIN PAGE STYLE OVERRIDE
+% Keeps page numbers on chapter-opening pages consistent.
+% ============================================================
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% ============================================================
+% CHAPTER TITLE SPACING
+% Reduces space above chapter titles from 50pt to 20pt.
+% ============================================================
+\makeatletter
+\patchcmd{\@makechapterhead}{50\p@}{20pt}{}{}
+\patchcmd{\@makeschapterhead}{50\p@}{20pt}{}{}
+\makeatother
+
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\Tab}{\hspace{2ex}}
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand\bibname{\centering BIBLIOGRAPHY}
+
+
+% ============================================================
+% DOCUMENT BEGIN
+% ============================================================
+\begin{document}
+
+
+% ============================================================
+% TITLE PAGE
+% ============================================================
+% >>> Fill in your details below.
+% ============================================================
+\thispagestyle{empty}
+\addvspace{5mm}
+
+\begin{center}
+\begin{doublespace}
+{\textbf{{\large YOUR THESIS TITLE GOES HERE}}}
+% Example:
+% {\textbf{{\large A Deep Learning Framework for Real-Time
+% Network Intrusion Detection}}}
+\end{doublespace}
+
+\vspace{10mm}
+{Thesis/Dissertation by}\\
+{Your Full Name Here}
+% Example: {Jane A. Smith}
+
+\vspace{30mm}
+
+{In Partial Fulfillment of the Requirements}\\[12pt]
+{For the Degree of}\\[12pt]
+{Bachelor of Arts in Computer Science}\vfill
+% If your degree is a B.S., change the line above to:
+% {Bachelor of Science in Computer Science}
+{Quinnipiac University}\\
+{Hamden, Connecticut}
+\vfill
+
+\begin{onehalfspace}
+{\copyright Month Year}\\
+% Example: {\copyright May 2027}
+Your Full Name Here\\
+All rights reserved\\
+\end{onehalfspace}
+
+\end{center}
+\newpage
+
+
+% ============================================================
+% FRONT MATTER
+% ============================================================
+\chaptertitlefont{\fontsize{14}{15}\selectfont\centering}
+
+\include{Abstract}
+\include{Acknowledgments}
+
+
+% ============================================================
+% TABLE OF CONTENTS AND LISTS
+% ============================================================
+\begin{onehalfspacing}
+
+\tableofcontents
+\cleardoublepage
+
+% Abbreviations list — remove if not using abbreviations
+\printglossary[
+  type=\acronymtype,
+  style=long3col,
+  title=\centerline{LIST OF ABBREVIATIONS},
+  toctitle=List of Abbreviations,
+  nonumberlist=true
+]
+
+% Symbols list — remove if not using a symbols list
+\printglossary[
+  type=symbols,
+  style=long3col,
+  title=\centerline{LIST OF SYMBOLS},
+  toctitle=List of Symbols,
+  nonumberlist=true
+]
+
+% >>> List of Figures: uncomment if required by your advisor
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\listfigurename}
+% \renewcommand*\listfigurename{LIST OF FIGURES}
+% \listoffigures
+
+% >>> List of Tables: uncomment if required by your advisor
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\listtablename}
+% \renewcommand*\listtablename{LIST OF TABLES}
+% \listoftables
+
+\end{onehalfspacing}
+
+
+% ============================================================
+% MAIN CHAPTERS
+% ============================================================
+% >>> Add, remove, or rename \include{} lines to match your
+%     thesis structure. There is no required chapter count.
+%
+%     Common structures by thesis type:
+%
+%     RESEARCH / SURVEY THESIS:
+%       Chapter_1 — Introduction
+%       Chapter_2 — Background
+%       Chapter_3 — Literature Review
+%       Chapter_4 — Analysis / Synthesis
+%       Conclusion — Conclusion
+%
+%     SYSTEMS / IMPLEMENTATION THESIS:
+%       Chapter_1 — Introduction
+%       Chapter_2 — Background and Related Work
+%       Chapter_3 — System Design
+%       Chapter_4 — Implementation
+%       Chapter_5 — Evaluation
+%       Conclusion — Conclusion
+%
+%     EXPERIMENTAL / ML / DATA SCIENCE THESIS:
+%       Chapter_1 — Introduction
+%       Chapter_2 — Literature Review
+%       Chapter_3 — Methodology
+%       Chapter_4 — Results
+%       Chapter_5 — Discussion
+%       Conclusion — Conclusion
+%
+%     To add a chapter: create a new .tex file and add a line here.
+%     To remove a chapter: comment out or delete its \include{} line.
+% ============================================================
+\chaptertitlefont{\fontsize{14}{15}\selectfont}
+
+\include{Chapter_1}
+\include{Chapter_2}
+\include{Chapter_3}
+% \include{Chapter_4}   % uncomment when you add this chapter
+% \include{Chapter_5}   % uncomment when you add this chapter
+\include{Conclusion}
+
+
+% ============================================================
+% REFERENCES
+% ============================================================
+\begin{onehalfspacing}
+  \renewcommand*\bibname{\centerline{REFERENCES}}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{References}
+
+  % Uncomment to include ALL .bib entries, even uncited ones:
+  % \nocite{*}
+
+  \bibliographystyle{ACM-Reference-Format}
+  \bibliography{References}
+\end{onehalfspacing}
+
+
+% ============================================================
+% APPENDICES (uncomment if needed)
+% ============================================================
+% \appendix
+% \cleardoublepage
+% \thispagestyle{plain}
+% \begin{center}
+%   \vspace*{2\baselineskip}
+%   {\textbf{{\large APPENDICES}}}
+%   \phantomsection
+%   \addcontentsline{toc}{chapter}{Appendices}
+% \end{center}
+% \input{Appendix_A}
+
+
+\end{document}

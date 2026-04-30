@@ -1,0 +1,173 @@
+% ============================================================
+% References.bib — Bibliography
+%
+% HOW CITATIONS WORK IN THIS TEMPLATE:
+%   - This template uses ACM Reference Format with NUMBERED
+%     citations. In your text, \cite{KEY} produces [1], [2], etc.
+%   - Multiple citations: \cite{smith2024, jones2023} → [1, 2]
+%   - When naming an author in prose:
+%     "Smith et al. [1] found that..." (for 3+ authors)
+%     "Smith and Jones [1] found that..." (for 2 authors)
+%   - The numbers are assigned automatically in citation order.
+%
+% CITATION KEY CONVENTION:
+%   Use AuthorYear or AuthorYearKeyword, e.g.:
+%     smith2024        → single author, 2024
+%     smithjones2024   → two authors
+%     smith2024ml      → disambiguate multiple 2024 papers
+%
+% AUTHOR NAMES:
+%   ACM prefers full first names, not initials.
+%   Write: author = {Jane A. Smith and Robert Johnson}
+%   Not:   author = {J. A. Smith and R. Johnson}
+%
+%   For very large author lists (10+ authors), you may use:
+%   author = {Jane Smith and Robert Johnson and others}
+%   This renders as "Smith et al." in the reference list.
+%
+% GETTING BIBTEX ENTRIES:
+%   - Google Scholar: click "Cite" → "BibTeX"
+%   - Semantic Scholar: click "Cite" → "BibTeX"
+%   - ACM Digital Library: click "Export Citation" → "BibTeX"
+%   Always check and correct author names to use full first names.
+%
+% Each example below shows the fields needed for that entry type.
+% Delete the examples and replace with your own references.
+% ============================================================
+
+
+% ============================================================
+% JOURNAL ARTICLE
+% Required: author, title, journal, volume, number, pages, year
+% Optional: doi, url
+% ============================================================
+@article{example_journal,
+  author  = {Jane A. Smith and Robert B. Johnson},
+  title   = {{Title of the Journal Article in Title Case}},
+  journal = {Name of Journal},
+  volume  = {10},
+  number  = {2},
+  pages   = {100--120},
+  year    = {2024},
+  doi     = {10.XXXX/XXXXXXX}
+}
+
+
+% ============================================================
+% CONFERENCE PAPER
+% Required: author, title, booktitle, year
+% Optional: pages, doi
+% ============================================================
+@inproceedings{example_conference,
+  author    = {Alice Brown and Bob White and Carol Green},
+  title     = {{Title of the Conference Paper}},
+  booktitle = {Proceedings of the Conference Name (CONF '24)},
+  year      = {2024},
+  pages     = {50--60},
+  doi       = {10.XXXX/XXXXXXX}
+}
+
+
+% ============================================================
+% BOOK
+% Required: author, title, publisher, year
+% Optional: edition, address
+% ============================================================
+@book{example_book,
+  author    = {Charles Green},
+  title     = {{Title of the Book}},
+  edition   = {2nd},
+  publisher = {Publisher Name},
+  address   = {City, State},
+  year      = {2023}
+}
+
+
+% ============================================================
+% BOOK CHAPTER (in an edited volume)
+% Required: author, title, booktitle, publisher, year
+% Optional: editor, pages
+% ============================================================
+@inbook{example_chapter,
+  author    = {Diana Lee and Edward Park},
+  title     = {{Title of the Chapter}},
+  booktitle = {{Title of the Edited Book}},
+  editor    = {Frank Kim},
+  publisher = {Publisher Name},
+  year      = {2023},
+  pages     = {200--225}
+}
+
+
+% ============================================================
+% ARXIV PREPRINT
+% Required: author, title, year
+% Optional: url, volume (use for arXiv ID)
+% ============================================================
+@article{example_arxiv,
+  author  = {Grace Chen and Henry Liu},
+  title   = {{Title of the Preprint}},
+  journal = {arXiv preprint},
+  volume  = {arXiv:2401.XXXXX},
+  year    = {2024},
+  url     = {https://arxiv.org/abs/2401.XXXXX}
+}
+
+
+% ============================================================
+% DATASET OR ONLINE RESOURCE
+% Required: author or organization, title, year
+% Optional: howpublished, doi, url
+% ============================================================
+@misc{example_dataset,
+  author       = {{Organization Name}},
+  title        = {{Name of Dataset or Resource}},
+  howpublished = {Repository or Publisher Name},
+  year         = {2024},
+  doi          = {10.XXXX/XXXXXXX},
+  url          = {https://example.com/dataset}
+}
+
+
+% ============================================================
+% TECHNICAL REPORT OR STANDARD
+% Required: author or institution, title, year
+% Optional: number, institution, url
+% ============================================================
+@techreport{example_techreport,
+  author      = {{Authoring Organization}},
+  title       = {{Title of the Technical Report or Standard}},
+  institution = {Institution Name},
+  number      = {Report No. XXX},
+  year        = {2023},
+  url         = {https://example.com/report}
+}
+
+
+% ============================================================
+% WEBSITE
+% Required: author or organization, title, year
+% Optional: url, note (use for access date)
+% ============================================================
+@misc{example_website,
+  author = {{Organization Name}},
+  title  = {{Title of the Webpage or Online Resource}},
+  year   = {2024},
+  url    = {https://example.com/page},
+  note   = {Accessed: Month Day, Year}
+}
+
+
+% ============================================================
+% SOFTWARE OR TOOL
+% Required: author, title, year
+% Optional: url, version, howpublished
+% ============================================================
+@misc{example_software,
+  author       = {Developer Name or {Organization Name}},
+  title        = {{Name of the Software or Tool}},
+  version      = {1.0},
+  howpublished = {GitHub},
+  year         = {2024},
+  url          = {https://github.com/example/repo}
+}

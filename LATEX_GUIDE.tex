@@ -1,0 +1,479 @@
+% ============================================================
+% LATEX_GUIDE.tex
+% A practical LaTeX reference for CS thesis students
+%
+% HOW TO USE THIS FILE:
+%   This file is NOT included in your compiled thesis.
+%   It is a reference you can read alongside your chapter files.
+%   Every example below is valid LaTeX — copy and paste directly
+%   into your chapter files and edit as needed.
+%
+%   To include this file in your compiled output temporarily
+%   (e.g., to see how examples render), add this line to
+%   Thesis.tex just before \end{document}:
+%     \include{LATEX_GUIDE}
+%   Remove it before your final submission.
+% ============================================================
+
+\chapter*{LaTeX Quick Reference}
+\addcontentsline{toc}{chapter}{LaTeX Quick Reference}
+
+\noindent
+This chapter is a reference for common LaTeX features used in
+CS theses. It is intended for students who are new to LaTeX or
+who need a quick reminder of the syntax for specific tasks.
+
+% ============================================================
+\section*{1. Basic Text Formatting}
+% ============================================================
+
+\noindent
+LaTeX handles most formatting automatically. A few things you
+will use frequently:
+
+\begin{itemize}
+    \item \textbf{Bold text}: \verb|\textbf{your text}|
+    \item \textit{Italic text}: \verb|\textit{your text}|
+    \item \texttt{Code inline}: \verb|\texttt{your text}| or \verb|\verb|CODE||
+    \item Line break within a paragraph: \verb|\\|
+    \item New paragraph: leave a blank line in the source
+    \item Em dash (—): \verb|---| \quad En dash (–): \verb|--|
+    \item Quotation marks: \verb|``text''| renders as ``text''
+\end{itemize}
+
+
+% ============================================================
+\section*{2. Lists}
+% ============================================================
+
+\noindent
+\textbf{Bulleted list:}
+
+\begin{verbatim}
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+\end{verbatim}
+
+Renders as:
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+
+\noindent
+\textbf{Numbered list:}
+
+\begin{verbatim}
+\begin{enumerate}
+    \item First item
+    \item Second item
+\end{enumerate}
+\end{verbatim}
+
+\noindent
+\textbf{Custom labels} (for research questions, contributions, etc.):
+
+\begin{verbatim}
+\begin{enumerate}
+    \item[\textbf{RQ1}] First research question.
+    \item[\textbf{RQ2}] Second research question.
+\end{enumerate}
+\end{verbatim}
+
+
+% ============================================================
+\section*{3. Figures}
+% ============================================================
+
+\noindent
+\textbf{Single figure:}
+
+\begin{verbatim}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/your_figure.png}
+    \caption{A descriptive caption explaining the figure.}
+    \label{fig:your_label}
+\end{figure}
+\end{verbatim}
+
+\noindent
+Key options for \verb|\includegraphics|:
+\begin{itemize}
+    \item \verb|width=0.7\textwidth| — 70\% of text width (adjust as needed)
+    \item \verb|width=\textwidth| — full text width
+    \item \verb|height=5cm| — fixed height (width scales automatically)
+    \item \verb|scale=0.5| — scale to 50\% of original size
+\end{itemize}
+
+\noindent
+\textbf{Reference a figure in your text:}
+
+\begin{verbatim}
+Figure~\ref{fig:your_label} shows...
+As shown in Figure~\ref{fig:your_label},...
+\end{verbatim}
+
+\noindent
+The \verb|~| prevents a line break between ``Figure'' and the number.
+
+\noindent
+\textbf{Side-by-side figures:}
+
+\begin{verbatim}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/figure_a.png}
+        \caption{Caption for the left figure.}
+        \label{fig:left}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/figure_b.png}
+        \caption{Caption for the right figure.}
+        \label{fig:right}
+    \end{subfigure}
+    \caption{Overall caption for both figures.}
+    \label{fig:both}
+\end{figure}
+\end{verbatim}
+
+\noindent
+\textbf{Important:} Put all image files in the \texttt{Images/} folder.
+Supported formats: PNG, JPG, PDF. PNG is recommended for screenshots
+and diagrams. PDF is recommended for vector graphics.
+
+
+% ============================================================
+\section*{4. Tables}
+% ============================================================
+
+\noindent
+\textbf{Basic table:}
+
+\begin{verbatim}
+\begin{table}[H]
+    \centering
+    \caption{Caption goes ABOVE the table.}
+    \label{tab:your_label}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\
+        \midrule
+        Row 1 data        & 0.92              & 0.88              \\
+        Row 2 data        & 0.87              & 0.91              \\
+        Row 3 data        & 0.95              & 0.93              \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{verbatim}
+
+\noindent
+Column alignment characters:
+\begin{itemize}
+    \item \texttt{l} — left aligned
+    \item \texttt{c} — centered
+    \item \texttt{r} — right aligned
+    \item \texttt{p\{3cm\}} — fixed-width column with text wrapping
+\end{itemize}
+
+\noindent
+\textbf{Reference a table:}
+
+\begin{verbatim}
+Table~\ref{tab:your_label} shows...
+\end{verbatim}
+
+\noindent
+\textbf{Auto-width table} (fills text width, good for many columns):
+
+\begin{verbatim}
+\begin{table}[H]
+    \centering
+    \caption{Caption here.}
+    \label{tab:wide}
+    \begin{tabularx}{\textwidth}{lXX}
+        \toprule
+        \textbf{Method} & \textbf{Description} & \textbf{Result} \\
+        \midrule
+        Method A & Describe it here & 92.3\% \\
+        Method B & Describe it here & 88.7\% \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+\end{verbatim}
+
+\noindent
+\texttt{X} columns expand to fill available space equally.
+
+
+% ============================================================
+\section*{5. Equations}
+% ============================================================
+
+\noindent
+\textbf{Numbered equation:}
+
+\begin{verbatim}
+\begin{equation}
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+    \label{eq:accuracy}
+\end{equation}
+\end{verbatim}
+
+\noindent
+Renders as:
+\begin{equation}
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+    \label{eq:accuracy}
+\end{equation}
+
+\noindent
+\textbf{Reference it in text:}
+
+\begin{verbatim}
+Equation~\ref{eq:accuracy} defines...
+\end{verbatim}
+
+\noindent
+\textbf{Inline math} (within a sentence):
+
+\begin{verbatim}
+The learning rate $\alpha = 0.001$ was fixed throughout training.
+\end{verbatim}
+
+\noindent
+\textbf{Unnumbered equation:}
+
+\begin{verbatim}
+\[
+    y = mx + b
+\]
+\end{verbatim}
+
+\noindent
+\textbf{Multi-line aligned equations:}
+
+\begin{verbatim}
+\begin{align}
+    f(x) &= x^2 + 2x + 1 \\
+         &= (x + 1)^2
+    \label{eq:multi}
+\end{align}
+\end{verbatim}
+
+\noindent
+Common math symbols:
+\begin{itemize}
+    \item Fraction: \verb|\frac{numerator}{denominator}|
+    \item Subscript: \verb|x_i| → $x_i$
+    \item Superscript: \verb|x^2| → $x^2$
+    \item Greek: \verb|\alpha \beta \gamma \sigma \mu| → $\alpha\ \beta\ \gamma\ \sigma\ \mu$
+    \item Sum: \verb|\sum_{i=1}^{n}| → $\sum_{i=1}^{n}$
+    \item Square root: \verb|\sqrt{x}| → $\sqrt{x}$
+    \item Infinity: \verb|\infty| → $\infty$
+    \item Approximately: \verb|\approx| → $\approx$
+    \item Less/greater or equal: \verb|\leq \geq| → $\leq\ \geq$
+\end{itemize}
+
+
+% ============================================================
+\section*{6. Code Listings}
+% ============================================================
+
+\noindent
+\textbf{Inline code} (short snippets in a sentence):
+
+\begin{verbatim}
+The function \texttt{train\_model()} accepts a learning rate parameter.
+\end{verbatim}
+
+\noindent
+\textbf{Code block} (longer snippets with syntax highlighting):
+
+\begin{verbatim}
+\begin{lstlisting}[language=Python, caption={A simple neural network
+training loop.}, label={lst:training}]
+for epoch in range(num_epochs):
+    model.train()
+    optimizer.zero_grad()
+    outputs = model(inputs)
+    loss = criterion(outputs, labels)
+    loss.backward()
+    optimizer.step()
+\end{lstlisting}
+\end{verbatim}
+
+\noindent
+Supported languages include: \texttt{Python}, \texttt{Java},
+\texttt{C}, \texttt{C++}, \texttt{JavaScript}, \texttt{SQL},
+\texttt{bash}, \texttt{HTML}, \texttt{XML}.
+
+\noindent
+\textbf{Reference a listing:}
+
+\begin{verbatim}
+Listing~\ref{lst:training} shows...
+\end{verbatim}
+
+
+% ============================================================
+\section*{7. Cross-References}
+% ============================================================
+
+\noindent
+LaTeX can automatically number and reference almost anything —
+chapters, sections, figures, tables, equations, and listings.
+The pattern is always: label it with \verb|\label{}|, then
+reference it with \verb|\ref{}|.
+
+\begin{verbatim}
+% Label a chapter, section, figure, table, or equation:
+\chapter{Introduction}
+\label{chapter1}          % labels this chapter
+
+\section{Background}
+\label{sec:background}    % labels this section
+
+% Reference them anywhere in the document:
+Chapter~\ref{chapter1} introduces...
+Section~\ref{sec:background} covers...
+\end{verbatim}
+
+\noindent
+\textbf{Naming convention for labels} (recommended):
+\begin{itemize}
+    \item Chapters: \texttt{chapter1}, \texttt{chapter2}
+    \item Sections: \texttt{sec:background}, \texttt{sec:results}
+    \item Figures:  \texttt{fig:architecture}, \texttt{fig:results}
+    \item Tables:   \texttt{tab:comparison}, \texttt{tab:results}
+    \item Equations:\texttt{eq:accuracy}, \texttt{eq:loss}
+    \item Listings: \texttt{lst:training}, \texttt{lst:algorithm}
+\end{itemize}
+
+
+% ============================================================
+\section*{8. Citations}
+% ============================================================
+
+\noindent
+This template uses ACM numbered citations. Add your sources to
+\texttt{References.bib}, then cite them in your text.
+
+\begin{verbatim}
+% Single citation — produces [1]
+\cite{smith2024}
+
+% Multiple citations — produces [1, 2, 3]
+\cite{smith2024, jones2023, lee2022}
+
+% Named author in prose — you write the name, LaTeX adds [1]
+Smith et al. \cite{smith2024} found that...
+Smith and Jones \cite{smithjones2024} proposed...
+\end{verbatim}
+
+\noindent
+The numbers are assigned automatically in the order citations
+first appear in your text. You do not need to number them manually.
+
+
+% ============================================================
+\section*{9. Footnotes}
+% ============================================================
+
+\begin{verbatim}
+This is a sentence with a footnote.\footnote{The footnote text
+appears at the bottom of the page automatically.}
+\end{verbatim}
+
+\noindent
+Use footnotes sparingly in a thesis. Prefer in-text explanation
+or a citation over a footnote where possible.
+
+
+% ============================================================
+\section*{10. Abbreviations (Glossary)}
+% ============================================================
+
+\noindent
+Abbreviations are defined in \texttt{Lists.tex} and used in
+your chapter text as follows:
+
+\begin{verbatim}
+% In Lists.tex:
+\newacronym{ml}{ML}{Machine Learning}
+
+% In your chapter:
+\gls{ml} models have become widely used...
+% First use renders as: "Machine Learning (ML) models..."
+% Subsequent uses render as: "ML models..."
+\end{verbatim}
+
+\noindent
+If you do not want the automatic expansion behavior, you can
+also just write the abbreviation directly in your text without
+using \verb|\gls{}|. The abbreviation list in the front matter
+will still be generated from your \texttt{Lists.tex} entries.
+
+
+% ============================================================
+\section*{11. Common Mistakes}
+% ============================================================
+
+\begin{itemize}
+    \item \textbf{Special characters}: The following characters
+    have special meaning in LaTeX and must be escaped:
+    \begin{center}
+    \begin{tabular}{ll}
+        \texttt{\%} → \texttt{\textbackslash\%} &
+        \texttt{\$} → \texttt{\textbackslash\$} \\
+        \texttt{\&} → \texttt{\textbackslash\&} &
+        \texttt{\_} → \texttt{\textbackslash\_} \\
+        \texttt{\#} → \texttt{\textbackslash\#} &
+        \texttt{\{} → \texttt{\textbackslash\{} \\
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Quotation marks}: Use \verb|``text''| not
+    \verb|"text"| — straight quotes do not typeset correctly.
+
+    \item \textbf{Figure placement}: Use \texttt{[H]} (from the
+    \texttt{float} package) to place a figure exactly where you
+    put it in the source. Without \texttt{[H]}, LaTeX may move
+    figures to the top or bottom of a page.
+
+    \item \textbf{References not updating}: Run pdflatex, then
+    bibtex, then pdflatex twice. In Overleaf, just click
+    Recompile — it handles this automatically.
+
+    \item \textbf{Undefined references}: If you see \textbf{??}
+    instead of a number, your \verb|\label{}| key does not match
+    your \verb|\ref{}| key. Check spelling and capitalization.
+
+    \item \textbf{Missing citation}: If \verb|\cite{KEY}| shows
+    \textbf{[?]}, the key does not exist in \texttt{References.bib}
+    or BibTeX has not been run yet. Check your bib file.
+\end{itemize}
+
+
+% ============================================================
+\section*{12. Useful Resources}
+% ============================================================
+
+\begin{itemize}
+    \item \textbf{Overleaf documentation}: \url{https://www.overleaf.com/learn}
+    \item \textbf{LaTeX symbol lookup}: \url{https://detexify.kirelabs.org}
+          (draw a symbol, get the LaTeX command)
+    \item \textbf{Table generator}: \url{https://www.tablesgenerator.com}
+          (build tables visually, export LaTeX code)
+    \item \textbf{BibTeX format guide}:
+          \url{https://www.acm.org/publications/authors/reference-formatting}
+    \item \textbf{Math reference}: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
+\end{itemize}
