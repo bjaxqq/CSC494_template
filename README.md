@@ -8,7 +8,7 @@ This template is designed for undergraduate Computer Science students at Quinnip
 
 Overleaf is the easiest way to use this template since it handles compilation automatically and lets you work from any browser without installing LaTeX locally.
 
-### Option A — Upload the zip file (fastest)
+### Upload the zip file
 
 1. Go to [overleaf.com](https://www.overleaf.com) and sign in or create a free account.
 2. On your Overleaf dashboard, click **New Project → Upload Project**.
@@ -20,10 +20,6 @@ Overleaf is the easiest way to use this template since it handles compilation au
    - In the same Menu panel, under **Settings → Compiler**, select `pdfLaTeX`.
 6. Click **Recompile**. The template should compile immediately and produce a PDF.
 7. Start editing — open `Thesis.tex` first and fill in your name and title.
-
-### Option B — Start from the Overleaf template gallery
-
-If this template has been published to the Overleaf gallery, open it from there and click **Open as Template** to create your own editable copy in one step. No zip file needed.
 
 ---
 
